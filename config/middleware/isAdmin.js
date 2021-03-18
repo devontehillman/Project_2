@@ -1,6 +1,9 @@
+const isAuthenticated = require("./isAuthenticated");
+
 module.exports = function(req, res, next) {
-  if (!isAdmin(req.user)) {
-    return res.redirect("/");
+  if (req.isAuthenticated() && req.user.admin === 1) {
+    console.log(req.user.admin);
+    return next();
   }
-  return next();
+  return res.redirect(403, "/error");
 };
