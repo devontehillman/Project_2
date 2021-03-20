@@ -7,10 +7,14 @@ CREATE TABLE users (
     userfirstname VARCHAR(30) NOT NULL,
     userlastname VARCHAR(30) NOT NULL,
     userid INT auto_increment,
-    useremail VARCHAR(128),
-    userrole BIT,
+    useremail VARCHAR(128) NOT NULL,
+    admin Boolean,
+    createdAt datetime,
+    updatedAt datetime,
+    password VARCHAR(30) NOT NULL,
     PRIMARY KEY (userid)
 );
+
 CREATE TABLE category (
     categoryid int NOT NULL,
     categoryname varchar(30) NOT NULL,
