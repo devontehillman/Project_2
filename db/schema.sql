@@ -1,38 +1,36 @@
 ### Schema
-
+DROP DATABASE IF EXISTS thetechlife_db;
 CREATE DATABASE thetechlife_db;
 USE thetechlife_db;
 
-CREATE TABLE Users (
-    UserFirstName varchar(30) NOT NULL,
-    UserLastName varchar(30) NOT NULL,
-    UserId int NOT NULL,
-    UserEmail varchar(255) NOT NULL,
-    UserImage image,
-    UserRole bit NOT NULL,
-    PRIMARY KEY (UserId), 
+CREATE TABLE users (
+    userfirstname VARCHAR(30) NOT NULL,
+    userlastname VARCHAR(30) NOT NULL,
+    userid INT auto_increment,
+    useremail VARCHAR(128),
+    userrole BIT,
+    PRIMARY KEY (userid)
 );
-
-CREATE TABLE Articles (
-    ArticleID int NOT NULL,
-    ArticleTitle varchar(30) NOT NULL,
-    CategoryID int NOT NULL,
-    ArticleEnglish text NOT NULL,
-    ArticleSpanish text, 
-    ArticleJapanese text,
-    ArticleKorean text,
-    ArticleMandarin text,
-    ArticleImage image,
-    AuthorID int,
-    PRIMARY KEY (ArticleID),
-    FOREIGN KEY (AuthorID) REFERENCES Users(UserId)
-    FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID),
+CREATE TABLE category (
+    categoryid int NOT NULL,
+    categoryname varchar(30) NOT NULL,
+    PRIMARY KEY (categoryid)
 
 );
 
-CREATE TABLE Category (
-    CategoryID int NOT NULL,
-    CategoryName varchar(30) NOT NULL,
-    PRIMARY KEY (CategoryID),
+CREATE TABLE articles (
+    articleID int NOT NULL auto_increment,
+    articleTitle varchar(30) NOT NULL,
+    categoryID int NOT NULL,
+    articleEnglish text NOT NULL,
+    articleSpanish text, 
+    articleJapanese text,	
+    articleKorean text,
+    articleMandarin text,
+    articleImage blob,
+    authorID int,
+    PRIMARY KEY (articleID),
+    FOREIGN KEY (authorID) REFERENCES users(userid),
+    FOREIGN KEY (categoryID) REFERENCES category(CategoryID)
 
-)
+);
