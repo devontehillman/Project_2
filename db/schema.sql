@@ -11,7 +11,7 @@ CREATE TABLE users (
     admin Boolean,
     createdAt datetime,
     updatedAt datetime,
-    password VARCHAR(30) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     PRIMARY KEY (userid)
 );
 
