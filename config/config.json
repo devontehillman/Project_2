@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "g}2Qa=6Ct~9Rb)4W",
-    "database": "passport_demo",
+    "database": "thetechlife_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

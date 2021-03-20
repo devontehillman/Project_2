@@ -39,4 +39,12 @@ module.exports = function(app) {
       res.redirect("/articleSample");
     }
   });
+  app.get("/articleSample", isAuthenticated, (req, res) => {
+    if (req.user.admin) {
+      res.redirect("/admin");
+    } else {
+      //redirect to content consumer page
+      res.sendFile(path.join(__dirname, "../public/articleSample.html"));
+    }
+  });
 };
