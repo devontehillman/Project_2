@@ -4,7 +4,7 @@ const password = bcrypt.hashSync("test12345", bcrypt.genSaltSync(10), null);
 console.log(password);
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert("users", [
+    return queryInterface.bulkInsert("Users", [
       {
         firstname: "Joe",
         lastname: "Ortisi",
@@ -17,6 +17,6 @@ module.exports = {
     ]);
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete("users", null, {});
+    return queryInterface.bulkDelete("Users", null, {});
   }
 };

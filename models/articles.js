@@ -1,6 +1,6 @@
 // Creating our Articles model
 module.exports = function(sequelize, DataTypes) {
-  const Articles = sequelize.define("user", {
+  const Articles = sequelize.define("Article", {
     title: {
       type: DataTypes.STRING,
       allowNull: false
