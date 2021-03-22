@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>This Tech Life | Create Post</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -29,11 +29,69 @@
         <div class="jumbotron jumbotron-fluid">
             <h1 class="display-4 text-center">This Tech Life</h1>
         </div>
-        <div class="row justify-content-center pb-4">
-            <div class="col-9 border">
-                <p>Sample Text</p>
+        <div class="row justify-content-right">
+            <div class="col text-right pr-5">
+                <button type="button" class="btn btn-primary btn-lg">Articles</button>
             </div>
         </div>
+        <div class="row justify-content-center py-4">
+            <div class="col-9 border pt-3">
+                <h5 class="text-center">Create/Update Post</h5>
+                <br>
+                <div class="mb-3">
+                    <label for="blogTitle" class="form-label">Blog Title</label>
+                    <input type="text" class="form-control" id="blogTitle">
+                </div>
+                <div class="mb-3">
+                    <label for="blogText" class="form-label">Blog Text</label>
+                    <textarea class="form-control" id="blogText" rows="10"></textarea>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label for="targetLanguages" class="form-label">Translate to:</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="english" value="english">
+                    <label class="form-check-label" for="english">English</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="japanese" value="japanese">
+                    <label class="form-check-label" for="japanese">Japanese</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="korean" value="korean">
+                    <label class="form-check-label" for="korean">Korean</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="mandarin" value="mandarin">
+                    <label class="form-check-label" for="mandarin">Mandarin</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="spanish" value="spanish">
+                    <label class="form-check-label" for="spanish">Spanish</label>
+                </div>
+                <br>
+                <div class="form-check form-check-inline">
+                    <label for="tags" class="form-label">Catagories:</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="tag1" value="tag1">
+                    <label class="form-check-label" for="tag1">Thing 1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="tag2" value="tag2">
+                    <label class="form-check-label" for="tag2">Thing 2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="tag3" value="tag3">
+                    <label class="form-check-label" for="tag3">Thing 3</label>
+                </div>
+                <br>
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary btn-lg mb-3">Save Article</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
