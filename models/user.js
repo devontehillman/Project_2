@@ -2,7 +2,7 @@
 const bcrypt = require("bcryptjs");
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
-  const User = sequelize.define("User", {
+  const User = sequelize.define("user", {
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
@@ -20,6 +20,14 @@ module.exports = function(sequelize, DataTypes) {
     admin: {
       type: DataTypes.BOOLEAN,
       default: false,
+      allowNull: false
+    },
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastname: {
+      type: DataTypes.STRING,
       allowNull: false
     }
   });
