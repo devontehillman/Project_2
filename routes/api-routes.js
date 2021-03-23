@@ -3,6 +3,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const { request } = require("chai");
+const translate = require('../translate.js');
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -15,7 +16,7 @@ module.exports = function(app) {
       lastname: req.body.lastname,
       email: req.user.email,
       id: req.user.id,
-      admin: req.user.admin
+      admin: req.user.admin,
     });
   });
 
@@ -28,14 +29,14 @@ module.exports = function(app) {
       lastname: req.body.lastname,
       email: req.body.email,
       password: req.body.password,
-      admin: req.body.admin
+      admin: req.body.admin,
     })
       .then(() => {
-        console.log(req.body)
+        console.log(req.body);
         res.redirect(307, "/api/login");
       })
-      .catch(err => {
-        console.log(req.body)
+      .catch((err) => {
+        console.log(req.body);
         res.status(401).json(err);
       });
   });
@@ -59,8 +60,27 @@ module.exports = function(app) {
         lastname: req.body.lastname,
         email: req.user.email,
         id: req.user.id,
-        admin: req.user.admin
+        admin: req.user.admin,
       });
     }
+  });
+
+  //Route to get translated text back to the database (save to db)
+  app.post("/api/newArticle", (req, res) => {
+    translate(req.body.text, "en", "es").then((trans) => {
+      db.Article.create({
+        title: req.body.title,
+        categoryId: req.body.category,
+        english: req.body.text,
+        spanishTrans: trans,
+      })
+        .then((data) => {
+          res.status(200).json(data);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    });
   });
 };
