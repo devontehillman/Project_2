@@ -1,6 +1,6 @@
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
-
+const db = require("../models");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
@@ -31,14 +31,7 @@ module.exports = function(app) {
       res.redirect("/articleSample");
     }
   });
-  app.get("/admin", isAuthenticated, (req, res) => {
-    if (req.user.admin) {
-      res.sendFile(path.join(__dirname, "../public/admin.html"));
-    } else {
-      //redirect to content consumer page
-      res.redirect("/articleSample");
-    }
-  });
+  
   app.get("/articleSample", isAuthenticated, (req, res) => {
     if (req.user.admin) {
       res.redirect("/admin");
@@ -47,6 +40,33 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "../public/articleSample.html"));
     }
   });
+
+  app.get("/admin", isAuthenticated, (req, res) => {
+    if (req.user.admin) {
+    db.Article.findAll({
+        raw: true,
+        attributes:[
+          'id',
+          'title',
+          'categoryId',
+          'english',
+          'spanishTrans'
+        ]
+        }).then((data) => {
+          console.log(data);
+          res.render('index', {
+            article: data
+          });
+          //res.status(200).json(data);
+        })
+    }
+    else {
+      //redirect to content consumer page
+      res.redirect("/");
+    }
+  
+  })
+  
   app.get("/newArticle", isAuthenticated, (req, res) => {
     if (req.user.admin) {
       res.sendFile(path.join(__dirname, "../public/newArticle.html"));
@@ -55,4 +75,6 @@ module.exports = function(app) {
       res.redirect("/");
     }
   });
+
+
 };
