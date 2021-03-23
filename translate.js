@@ -1,4 +1,6 @@
 const fetch = require("node-fetch");
+require("dotenv").config();
+
 
 module.exports = (text, source, target) => {
   // translate and return the text
