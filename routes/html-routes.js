@@ -47,4 +47,12 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "../public/articleSample.html"));
     }
   });
+  app.get("/newArticle", isAuthenticated, (req, res) => {
+    if (req.user.admin) {
+      res.sendFile(path.join(__dirname, "../public/newArticle.html"));
+    } else {
+      //redirect to content consumer page
+      res.redirect("/");
+    }
+  });
 };
