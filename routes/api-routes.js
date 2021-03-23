@@ -3,6 +3,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const { request } = require("chai");
+const translate = require('../translate.js');
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -66,19 +67,18 @@ module.exports = function(app) {
 
   //Route to get translated text back to the database (save to db)
   app.post("/api/newArticle", (req, res) => {
-    translate(req.body.blogText, "en", "es").then((trans) => {
+    translate(req.body.text, "en", "es").then((trans) => {
       db.Article.create({
         title: req.body.title,
         categoryId: req.body.category,
         english: req.body.text,
         spanishTrans: trans,
       })
-        .then(() => {
-          console.log(req.body);
-          res.status(200);
+        .then((data) => {
+          res.status(200).json(data);
         })
         .catch((err) => {
-          console.log(req.body);
+          console.log(err);
           res.status(500).json(err);
         });
     });

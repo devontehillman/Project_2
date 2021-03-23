@@ -18,13 +18,15 @@ $(document).ready(function() {
     console.log("click");
 
     let article = {
-      title: $("input#blogTitle"),
+      title: $("#blogTitle").val(),
       category: $("#frontEnd").prop("checked") ? 1 : 2,
-      text: $("input#blogText"),
+      text: $("#blogText").val(),
     };
 
+    
     $.post("/api/newArticle", article)
-      .then(() => {
+      .then((res) => {
+        console.log(res)
         window.location.replace("/admin");
         // If there's an error, log the error
       })
