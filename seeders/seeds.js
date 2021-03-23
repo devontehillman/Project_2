@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
 const bcrypt = require("bcryptjs");
-const password = bcrypt.hashSync("test12345", bcrypt.genSaltSync(10), null);
-console.log(password);
+
+const password = bcrypt.hashSync("123", bcrypt.genSaltSync(10), null);
+//console.log(password);
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert("Users", [
       {
-        firstname: "Joe",
-        lastname: "Ortisi",
-        email: "jaortisi@mailinator.com",
+        firstname: "d",
+        lastname: "h",
+        email: "d@aol.com",
         password,
         admin: true,
         createdAt: new Date(),
