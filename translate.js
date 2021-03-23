@@ -1,3 +1,5 @@
+
+//use this file for the API and the translate function
 const fetch = require("node-fetch");
 
 module.exports = (text, source, target) => {
