@@ -63,4 +63,24 @@ module.exports = function(app) {
       });
     }
   });
+
+  //Route to get translated text back to the database (save to db) 
+  app.post("/api/", (req, res) => {
+    db.User.create({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      password: req.body.password,
+      admin: req.body.admin
+    })
+      .then(() => {
+        console.log(req.body)
+        res.redirect(307, "/api/login");
+      })
+      .catch(err => {
+        console.log(req.body)
+        res.status(401).json(err);
+      });
+  });
+
 };
