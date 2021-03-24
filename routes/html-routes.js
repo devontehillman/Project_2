@@ -48,7 +48,7 @@ module.exports = function(app) {
         raw: true,
         attributes: ["id", "title", "categoryId", "english", "spanishTrans"],
       }).then((data) => {
-        console.log(data);
+        //console.log(data);
         res.render("index", {
           article: data,
         });
@@ -68,27 +68,43 @@ module.exports = function(app) {
       res.redirect("/");
     }
   });
-  app.get("/article/:title", isAuthenticated, (req, res) => {
-    if (req.user.admin) {
+
+  app.get("/api/article/:title", isAuthenticated, (req, res) => {
+    // console.log(req.params)
+    // res.end()
+    const articleContents = {
+      first: '',
+      last: '',
+      article: {}
+    };
+
+    
+
       db.User.findOne({
-        where: { admin: 1 }
+        raw: true,
+        where: { admin: 1 },
+        attributes:["firstname", "lastname"]
       }).then((data) => {
-        console.log(data);
+        articleContents.first = data.firstname;
+        articleContents.last = data.lastname;
+        //console.log(articleContents)
       });
+
       db.Article.findOne({
         where: { title: req.params.title },
         raw: true,
         attributes: ["id", "title", "categoryId", "english", "spanishTrans"],
       }).then((data) => {
-        console.log(data);
-        // res.render("index", {
-        //   article: data,
-        // });
-        res.status(200).json(data);
+          articleContents.article = data;
+          //console.log(articleContents.article)
+          res.render("article", {
+          first: articleContents.first,
+          last: articleContents.last,
+          title: articleContents.article.title, 
+          english: articleContents.article.english,
+          spanishTrans: articleContents.article.spanishTrans
+          }
+          )
       });
-    } else {
-      //redirect to content consumer page
-      res.redirect("/articleSample");
-    }
   });
 };

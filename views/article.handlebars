@@ -29,9 +29,7 @@
             </div>
         </div>
               <hr />
-      <div class="jumbotron jumbotron-fluid">
-        <h1 class="display-4 text-center">This Tech Life</h1>
-      </div>
+      
       <div class="row justify-content-center pb-4">
         <div class="col-8">
           <div class="row pb-5">
@@ -43,7 +41,7 @@
               />
             </div>
             <div class="col-4">
-              <h3 class="authorName">{{firstname}}{{lastname}}</h3>
+              <h3 class="authorName">{{first}}{{last}}</h3>
               <h6 class="authorTitle">Blog Author</h6>
             </div>
           </div>
@@ -62,10 +60,6 @@
       </div>
     </div>
 
-        {{!-- for each article --}}
-        {{#each article}}
-        {{> articles/article-block}}
-        {{/each}}
         </div>
     </div>
 
@@ -77,5 +71,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/newArticle.js"></script>
+<script type="text/javascript" src="js/article.js"></script>
 </body>
