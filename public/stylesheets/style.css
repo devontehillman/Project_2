@@ -1,20 +1,27 @@
-form.signup,
-form.login {
-  margin-top: 50px;
-}
+form.signup,form.login {
+   margin-top: 50px;
+ }
 
-h1 {
-  font-family: 'Orbitron', sans-serif;
-  color: white;
+ .article-card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ body {
+   background-color: #E3FBE3;
+ }
+ .container {
+   background-color: #FFFEFD;
+   min-height: 100vh;
+ }
+ h1 {
+   font-family: 'Orbitron', sans-serif;
+   color: white;
   text-shadow: 2px 2px 2px darkgreen, 4px 4px 4px green, 8px 8px 8px lightgreen;
 }
-
 .jumbotron {
   background-image: url(../images/hero.jpg);
   background-size: cover;
   height: 100%;
 }
-
 .jumbotron.img {
   filter: grayscale(90%);
 }

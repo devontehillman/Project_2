@@ -83,15 +83,15 @@ module.exports = function(app) {
       last: '',
       article: {}
     };
-    //   db.User.findOne({
-    //     raw: true,
-    //     where: { admin: 1 },
-    //     attributes:["firstname", "lastname"]
-    //   }).then((data) => {
-    //     articleContents.first = data.firstname;
-    //     articleContents.last = data.lastname;
-    //     //console.log(articleContents)
-    //   });
+      db.User.findOne({
+        raw: true,
+        where: { admin: 1 },
+        attributes:["firstname", "lastname"]
+      }).then((data) => {
+        articleContents.first = data.firstname;
+        articleContents.last = data.lastname;
+        //console.log(articleContents)
+      });
 
       db.Article.findOne({
         where: { title: req.params.title },
@@ -100,14 +100,14 @@ module.exports = function(app) {
       }).then((data) => {
           articleContents.article = data;
           console.log(articleContents.article)
-          // res.render("article", {
-          // first: articleContents.first,
-          // last: articleContents.last,
-          // title: articleContents.article.title, 
-          // english: articleContents.article.english,
-          // spanishTrans: articleContents.article.spanishTrans
-          // }
-          //)
+          res.render("article", {
+          first: articleContents.first,
+          last: articleContents.last,
+          title: articleContents.article.title, 
+          english: articleContents.article.english,
+          spanishTrans: articleContents.article.spanishTrans
+          }
+          )
       });
   });
 };
