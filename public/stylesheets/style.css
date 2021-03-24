@@ -1,7 +1,9 @@
 form.signup,form.login {
    margin-top: 50px;
  }
-
+ body{
+  background:url(../images/techdrop.jpeg);
+}
  .article-card{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
  }
@@ -24,4 +26,7 @@ form.signup,form.login {
 }
 .jumbotron.img {
   filter: grayscale(90%);
+}
+.personal-statement {
+  line-height: 2.6
 }
