@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
 const { request } = require("chai");
-const translate = require('../translate.js');
+const translate = require("../translate.js");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.

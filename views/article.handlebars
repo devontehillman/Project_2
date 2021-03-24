@@ -28,10 +28,38 @@
                 <a class="btn btn-primary btn-lg" href="newArticle">Add Article</a>
             </div>
         </div>
-        {{!-- for each article --}}
-        {{#each article}}
-        {{> articles/article-block}}
-        {{/each}}
+              <hr />
+      
+      <div class="row justify-content-center pb-4">
+        <div class="col-8">
+          <div class="row pb-5">
+            <div class="col-2">
+              <img
+                src="https://via.placeholder.com/100"
+                class="rounded-circle authorImage"
+                alt="..."
+              />
+            </div>
+            <div class="col-4">
+              <h3 class="authorName">{{first}}{{last}}</h3>
+              <h6 class="authorTitle">Blog Author</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h2 class="articleTitle">{{title}}</h2>
+              <p class="border articleText">{{english}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-3 pt-5">
+          <div class="border mt-5 ml-3 mr-5 text-center">
+            <h4>Related Articles</h4>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
         </div>
     </div>
 
