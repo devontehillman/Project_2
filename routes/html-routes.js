@@ -92,7 +92,6 @@ module.exports = function(app) {
         articleContents.last = data.lastname;
         //console.log(articleContents)
       });
-
       db.Article.findOne({
         where: { title: req.params.title },
         raw: true,
