@@ -2,7 +2,13 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-
+body {
+  background-color: #E3FBE3;
+}
+.container {
+  background-color: #FFFEFD;
+  min-height: 100vh;
+}
 h1 {
   font-family: 'Orbitron', sans-serif;
   color: white;
