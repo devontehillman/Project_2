@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
 const db = require("../models");
@@ -31,7 +32,7 @@ module.exports = function(app) {
       res.redirect("/articleSample");
     }
   });
-  
+
   app.get("/articleSample", isAuthenticated, (req, res) => {
     if (req.user.admin) {
       res.redirect("/admin");
@@ -43,30 +44,22 @@ module.exports = function(app) {
 
   app.get("/admin", isAuthenticated, (req, res) => {
     if (req.user.admin) {
-    db.Article.findAll({
+      db.Article.findAll({
         raw: true,
-        attributes:[
-          'id',
-          'title',
-          'categoryId',
-          'english',
-          'spanishTrans'
-        ]
-        }).then((data) => {
-          console.log(data);
-          res.render('index', {
-            article: data
-          });
-          //res.status(200).json(data);
-        })
-    }
-    else {
+        attributes: ["id", "title", "categoryId", "english", "spanishTrans"],
+      }).then((data) => {
+        console.log(data);
+        res.render("index", {
+          article: data,
+        });
+        //res.status(200).json(data);
+      });
+    } else {
       //redirect to content consumer page
-      res.redirect("/");
+      res.redirect("/articleSample");
     }
-  
-  })
-  
+  });
+
   app.get("/newArticle", isAuthenticated, (req, res) => {
     if (req.user.admin) {
       res.sendFile(path.join(__dirname, "../public/newArticle.html"));
@@ -75,6 +68,27 @@ module.exports = function(app) {
       res.redirect("/");
     }
   });
-
-
+  app.get("/article/:title", isAuthenticated, (req, res) => {
+    if (req.user.admin) {
+      db.User.findOne({
+        where: { admin: 1 }
+      }).then((data) => {
+        console.log(data);
+      });
+      db.Article.findOne({
+        where: { title: req.params.title },
+        raw: true,
+        attributes: ["id", "title", "categoryId", "english", "spanishTrans"],
+      }).then((data) => {
+        console.log(data);
+        // res.render("index", {
+        //   article: data,
+        // });
+        res.status(200).json(data);
+      });
+    } else {
+      //redirect to content consumer page
+      res.redirect("/articleSample");
+    }
+  });
 };
