@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+
+//seeder file so we can quickly add values to the database for testing.
 const bcrypt = require("bcryptjs");
 
 const password = bcrypt.hashSync("123", bcrypt.genSaltSync(10), null);

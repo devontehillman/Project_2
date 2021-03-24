@@ -1,3 +1,5 @@
+//This file is used when a newArticle is created.  There are a number of variables that are commented out, including the translation to Japanese, Korean, and Mandarin for future development. 
+
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable prefer-const */
 /* eslint-disable prettier/prettier */

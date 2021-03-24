@@ -1,3 +1,5 @@
+//This file uses the passport package from node. It uses "strategies" to authenticate the users and direct the user to the appropriate route based on the user's email address and hashed password.
+
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 

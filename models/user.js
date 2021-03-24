@@ -1,3 +1,5 @@
+//This uses the bcrypt module for salted hashing of passwords. Sequelize also requires that the user logs in with a validated email, which is handled as a per-attribute validation from Sequelize.
+
 // Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
 const bcrypt = require("bcryptjs");
 // Creating our User model

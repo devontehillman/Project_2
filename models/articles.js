@@ -1,4 +1,4 @@
-// Creating our Articles model
+// Creating our Articles model using Sequelize. Each article must have a title, category ID and must have text in English. Additional languages are included for future development.
 module.exports = function(sequelize, DataTypes) {
   const Articles = sequelize.define("Article", {
     title: {
