@@ -7,9 +7,15 @@ const articleBody = $(".card-text")
 
 articleTitle.click(function(event) {
   
-  console.log($(this).text());
-  title = $(this).text()
+  const title = $(this).text()
+  if (title == null) {
+    console.log($(this).text());
+    console.log("title is null")
+  }else{
+    console.log($(this).text());
+    location.assign(`/api/article/${title}`);
+  }
   
-  location.assign(`/api/article/${title}`);
+  
 });
 });
