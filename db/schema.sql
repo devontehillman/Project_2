@@ -1,3 +1,5 @@
+-- The schema is presented here, commented out as Sequelize creates the model that is used in the production version of the product.
+
 CREATE DATABASE IF NOT EXISTS thetechlife_db;
 -- USE thetechlife_db;
 

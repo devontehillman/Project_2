@@ -1,3 +1,5 @@
+//config file using the dotenv module to store environmental variables including the root password to the database
+
 require("dotenv").config();
 
 module.exports = {
