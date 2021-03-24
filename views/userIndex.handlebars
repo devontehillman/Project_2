@@ -1,31 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This Tech Life</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./stylesheets/style.css">
-</head>
-
 <body>
     <div class="container border">
         <header class="blogHeader">
             <p class="text-right"><a class="navbar-brand" href="/logout">Logout</a></p>
             <div class="row justify-content-between align-items-center">
                 <div class="col-4 text-center">
-                    <a href="/admin" role="button" class="btn btn-outline-primary">Articles</a>
+                    <a href="/user" role="button" class="btn btn-outline-primary">Articles</a>
                 </div>
                 <div class="col-4 text-center">
-                    <a href="./about.html" role="button" class="btn btn-outline-primary">About</a>
+                    <a href="/about.html" role="button" class="btn btn-outline-primary">About</a>
                 </div>
                 <div class="col-4 text-center">
-                    <a href="./contact.html" role="button" class="btn btn-outline-primary">Contact</a>
+                    <a href="/contact.html" role="button" class="btn btn-outline-primary">Contact</a>
                 </div>
             </div>
         </header>
@@ -39,14 +24,11 @@
                 <button type="button" class="btn btn-outline-secondary">Front End</button>
                 <button type="button" class="btn btn-outline-secondary">Back End</button>
             </div>
-            <div class="col-3 text-right pr-5">
-                <a class="btn btn-primary btn-lg" href="newArticle">Add Article</a>
-            </div>
         </div>
-        <div class="row justify-content-center py-4" id="article-section">
-            <div class="col-9 border">
-                <p>Sample Text</p>
-            </div>
+        {{!-- for each article --}}
+        {{#each article}}
+        {{> articles/userArticle-block}}
+        {{/each}}
         </div>
     </div>
 
@@ -58,8 +40,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/newArticle.js"></script>
-
+<script type="text/javascript" src="js/article.js"></script>
 </body>
-
-</html>

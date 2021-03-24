@@ -29,18 +29,25 @@ module.exports = function(app) {
       res.redirect("/admin");
     } else {
       //redirect to content consumer page
-      res.redirect("/articleSample");
+      res.redirect("/user");
     }
   });
 
-  app.get("/articleSample", isAuthenticated, (req, res) => {
+  app.get("/user", isAuthenticated, (req, res) => {
     if (req.user.admin) {
       res.redirect("/admin");
     } else {
-      //redirect to content consumer page
-      res.sendFile(path.join(__dirname, "../public/articleSample.html"));
+      db.Article.findAll({
+        raw: true,
+        attributes: ["id", "title", "categoryId", "english", "spanishTrans"],
+      }).then((data) => {
+        //console.log(data);
+        res.render("userIndex", {
+          article: data,
+        });
+      });
     }
-  });
+    });
 
   app.get("/admin", isAuthenticated, (req, res) => {
     if (req.user.admin) {
@@ -52,11 +59,10 @@ module.exports = function(app) {
         res.render("index", {
           article: data,
         });
-        //res.status(200).json(data);
       });
     } else {
       //redirect to content consumer page
-      res.redirect("/articleSample");
+      res.redirect("/user");
     }
   });
 
@@ -70,25 +76,22 @@ module.exports = function(app) {
   });
 
   app.get("/api/article/:title", isAuthenticated, (req, res) => {
-    // console.log(req.params)
+    console.log(req.params)
     // res.end()
     const articleContents = {
       first: '',
       last: '',
       article: {}
     };
-
-    
-
-      db.User.findOne({
-        raw: true,
-        where: { admin: 1 },
-        attributes:["firstname", "lastname"]
-      }).then((data) => {
-        articleContents.first = data.firstname;
-        articleContents.last = data.lastname;
-        //console.log(articleContents)
-      });
+    //   db.User.findOne({
+    //     raw: true,
+    //     where: { admin: 1 },
+    //     attributes:["firstname", "lastname"]
+    //   }).then((data) => {
+    //     articleContents.first = data.firstname;
+    //     articleContents.last = data.lastname;
+    //     //console.log(articleContents)
+    //   });
 
       db.Article.findOne({
         where: { title: req.params.title },
@@ -96,15 +99,15 @@ module.exports = function(app) {
         attributes: ["id", "title", "categoryId", "english", "spanishTrans"],
       }).then((data) => {
           articleContents.article = data;
-          //console.log(articleContents.article)
-          res.render("article", {
-          first: articleContents.first,
-          last: articleContents.last,
-          title: articleContents.article.title, 
-          english: articleContents.article.english,
-          spanishTrans: articleContents.article.spanishTrans
-          }
-          )
+          console.log(articleContents.article)
+          // res.render("article", {
+          // first: articleContents.first,
+          // last: articleContents.last,
+          // title: articleContents.article.title, 
+          // english: articleContents.article.english,
+          // spanishTrans: articleContents.article.spanishTrans
+          // }
+          //)
       });
   });
 };
